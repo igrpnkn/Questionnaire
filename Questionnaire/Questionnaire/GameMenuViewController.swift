@@ -27,10 +27,9 @@ final class GameMenuViewController: UIViewController {
     }
     
     @IBAction func viewScorePressed(_ sender: Any) {
-//        let scoreTVC = ScoreTableViewController()
-//        scoreTVC.modalTransitionStyle = .coverVertical
-//        scoreTVC.modalPresentationStyle = .fullScreen
-//        self.present(scoreTVC, animated: true, completion: nil)
+        guard let scoreListVC = storyboard?.instantiateViewController(identifier: "ScoreViewController") as? ScoreViewController else { return }
+        scoreListVC.modalPresentationStyle = .formSheet
+        self.present(scoreListVC, animated: true, completion: nil)
     }
     
 }
