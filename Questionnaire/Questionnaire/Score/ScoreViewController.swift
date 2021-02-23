@@ -13,16 +13,13 @@ class ScoreViewController: UIViewController {
     @IBOutlet weak var scoreTable: UITableView!
     
     let cellIdentifier = "scoreCell"
-    var scoreData: [Int] = []
+    var scoreData: [Score] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         scoreTable.delegate = self
         scoreTable.dataSource = self
         // Do any additional setup after loading the view.
-        for i in 0...20 {
-            scoreData.append(i)
-        }
     }
     
     @IBAction func exitButtonPressed(_ sender: Any) {
@@ -40,8 +37,8 @@ extension ScoreViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ScoreTableViewCell
         var content = cell.defaultContentConfiguration()
-        content.text = "Result"
-        content.secondaryText = String(scoreData[indexPath.row])
+        content.text = "\(scoreData[indexPath.row].accuracity * 100) % progress"
+        content.secondaryText = "\(scoreData[indexPath.row].date)"
         content.image = UIImage(systemName: "person.circle")
         content.imageProperties.cornerRadius = tableView.rowHeight / 2
         cell.contentConfiguration = content

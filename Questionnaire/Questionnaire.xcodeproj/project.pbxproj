@@ -18,6 +18,10 @@
 		3AB0145925E431F2006F4C25 /* AnswerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0145825E431F2006F4C25 /* AnswerTableViewCell.swift */; };
 		3AB0145E25E50BBD006F4C25 /* ScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0145D25E50BBC006F4C25 /* ScoreViewController.swift */; };
 		3AB0146325E50CC0006F4C25 /* ScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0146225E50CC0006F4C25 /* ScoreTableViewCell.swift */; };
+		3AB0146725E54E42006F4C25 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0146625E54E42006F4C25 /* Game.swift */; };
+		3AB0146A25E54E52006F4C25 /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0146925E54E52006F4C25 /* GameSession.swift */; };
+		3AB0147125E58C7F006F4C25 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0147025E58C7F006F4C25 /* Score.swift */; };
+		3AB0147425E58D38006F4C25 /* ScoreCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0147325E58D38006F4C25 /* ScoreCaretaker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		3AB0145825E431F2006F4C25 /* AnswerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerTableViewCell.swift; sourceTree = "<group>"; };
 		3AB0145D25E50BBC006F4C25 /* ScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreViewController.swift; sourceTree = "<group>"; };
 		3AB0146225E50CC0006F4C25 /* ScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableViewCell.swift; sourceTree = "<group>"; };
+		3AB0146625E54E42006F4C25 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		3AB0146925E54E52006F4C25 /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
+		3AB0147025E58C7F006F4C25 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		3AB0147325E58D38006F4C25 /* ScoreCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCaretaker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,14 +77,16 @@
 				3AB0146125E50CA4006F4C25 /* Score */,
 				3AB0145B25E431F9006F4C25 /* Game */,
 				3AB0144725E3FD36006F4C25 /* GameMenuViewController.swift */,
-				3AB0145D25E50BBC006F4C25 /* ScoreViewController.swift */,
 				3AB0140F25DEF67F006F4C25 /* AppDelegate.swift */,
 				3AB0141125DEF67F006F4C25 /* SceneDelegate.swift */,
 				3AB0141825DEF682006F4C25 /* Assets.xcassets */,
 				3AB0141525DEF67F006F4C25 /* Main.storyboard */,
 				3AB0141A25DEF682006F4C25 /* LaunchScreen.storyboard */,
 				3AB0141D25DEF682006F4C25 /* Info.plist */,
-				3AB0146225E50CC0006F4C25 /* ScoreTableViewCell.swift */,
+				3AB0146625E54E42006F4C25 /* Game.swift */,
+				3AB0146925E54E52006F4C25 /* GameSession.swift */,
+				3AB0147025E58C7F006F4C25 /* Score.swift */,
+				3AB0147325E58D38006F4C25 /* ScoreCaretaker.swift */,
 			);
 			path = Questionnaire;
 			sourceTree = "<group>";
@@ -94,6 +104,8 @@
 		3AB0146125E50CA4006F4C25 /* Score */ = {
 			isa = PBXGroup;
 			children = (
+				3AB0145D25E50BBC006F4C25 /* ScoreViewController.swift */,
+				3AB0146225E50CC0006F4C25 /* ScoreTableViewCell.swift */,
 			);
 			path = Score;
 			sourceTree = "<group>";
@@ -169,12 +181,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AB0145E25E50BBD006F4C25 /* ScoreViewController.swift in Sources */,
+				3AB0147425E58D38006F4C25 /* ScoreCaretaker.swift in Sources */,
+				3AB0146725E54E42006F4C25 /* Game.swift in Sources */,
+				3AB0146A25E54E52006F4C25 /* GameSession.swift in Sources */,
 				3AB0145325E40B6F006F4C25 /* GameViewController.swift in Sources */,
 				3AB0146325E50CC0006F4C25 /* ScoreTableViewCell.swift in Sources */,
 				3AB0145925E431F2006F4C25 /* AnswerTableViewCell.swift in Sources */,
 				3AB0141025DEF67F006F4C25 /* AppDelegate.swift in Sources */,
 				3AB0144825E3FD36006F4C25 /* GameMenuViewController.swift in Sources */,
 				3AB0141225DEF67F006F4C25 /* SceneDelegate.swift in Sources */,
+				3AB0147125E58C7F006F4C25 /* Score.swift in Sources */,
 				3AB0145625E40EA4006F4C25 /* QuestionProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

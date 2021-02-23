@@ -55,8 +55,27 @@ final class QuestionProvider {
                         "Устраивать балы",
                         "Ездить в каретах",
                         "Строить каменные дома",
-                        "Казнить купцов"])
+                        "Казнить купцов"]),
+            Question(question: "Как звали первого человека вышедшего в открытый космос?", answerIndex: 1, options: [
+                        "Юрий Гагарин",
+                        "Алексей Леонов",
+                        "Нил Армстронг",
+                        "Валентина Терешкова"]),
+            Question(question: "Что означает буква R на рычаге коробки передач в автомобиле?", answerIndex: 2, options: [
+                        "Ракета",
+                        "Руками не трогать",
+                        "Реверс",
+                        "Разворот"]),
+            Question(question: "Чему равняется длина удава в попугаях?", answerIndex: 3, options: [
+                        "28 попугаев",
+                        "31 попугай",
+                        "33 попугая",
+                        "38 попугаев"])
         ]
+    }
+    
+    public func countQuestions() -> Int {
+        return questions.count
     }
     
     public func getRandomized() -> [Question] {
