@@ -16,6 +16,14 @@ class GameSession {
     var isCallFriendUsed: Bool?
     var isGroupHelpUsed: Bool?
     
+    private var questionOrder: QuestionOrder {
+        if let order = UserDefaults.standard.object(forKey: Game.shared.orderKey) as? QuestionOrder.RawValue {
+            return QuestionOrder.init(rawValue: order)!
+        } else {
+            return .serial
+        }
+    }
+    
     public init() {
     }
     

@@ -11,6 +11,7 @@ final class GameMenuViewController: UIViewController {
 
     @IBOutlet weak var gameButton: UIButton!
     @IBOutlet weak var scoreButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var previousResult: UILabel!
     
     var gameSession: GameSession?
@@ -35,6 +36,14 @@ final class GameMenuViewController: UIViewController {
         scoreListVC.modalPresentationStyle = .formSheet
         scoreListVC.scoreData = Game.shared.getScores()
         self.present(scoreListVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func settingsButtonPressed(_ sender: Any) {
+        guard let settingsVC = storyboard?.instantiateViewController(identifier: "SettingsViewController") as? SettingsViewController else {
+            return
+        }
+        settingsVC.modalPresentationStyle = .formSheet
+        self.present(settingsVC, animated: true, completion: nil)
     }
     
 }

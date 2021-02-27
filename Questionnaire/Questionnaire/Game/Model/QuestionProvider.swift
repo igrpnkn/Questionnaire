@@ -13,6 +13,10 @@ struct Question {
     var options: [String]
 }
 
+enum QuestionOrder: String {
+    case serial, random
+}
+
 final class QuestionProvider {
     
     public static let shared = QuestionProvider()
@@ -78,7 +82,7 @@ final class QuestionProvider {
         return questions.count
     }
     
-    public func getRandomized() -> [Question] {
+    public func getQuestions() -> [Question] {
         var randomizedQuestions: [Question] = []
         while !questions.isEmpty {
             let randomIndex = Int.random(in: 0..<questions.count)

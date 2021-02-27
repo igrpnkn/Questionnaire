@@ -27,7 +27,7 @@ final class GameViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     let cellIdentifier = "answerCell"
     
-    private var questionnaire = QuestionProvider.shared.getRandomized()
+    private var questionnaire = QuestionProvider.shared.getQuestions()
     private var questionCount: Int = 0
     private var isDropHalfUsed: Bool = false
     private var isCallFriendUsed: Bool = false
@@ -54,7 +54,8 @@ final class GameViewController: UIViewController {
         let alert = UIAlertController(title: "Are you shure?", message: nil, preferredStyle: .actionSheet)
         let alertContinue = UIAlertAction(title: "Continue", style: .cancel) { _ in
         }
-        let alertStop = UIAlertAction(title: "Leave", style: .destructive) { _ in
+        let alertStop = UIAlertAction(title: "Leave", style: .destructive) { [weak self] _ in
+            guard let self = self else { return }
             self.delegate?.snapshot(questionNumber: self.questionCount, isDropHalfUsed: self.isDropHalfUsed, isCallFriendUsed: self.isCallFriendUsed, isGroupHelpUsed: self.isGroupHelpUsed)
             self.dismiss(animated: true, completion: nil)
         }
@@ -70,7 +71,7 @@ final class GameViewController: UIViewController {
         var hypothesis: String {
             let randomIndex = Int.random(in: 0...questionnaire[questionCount].options.count)
             if randomIndex == questionnaire[questionCount].options.count {
-                return "Suck buddy :)"
+                return "I don't know :("
             } else {
                 return "I think the answer is: \(questionnaire[questionCount].options[randomIndex])"
             }

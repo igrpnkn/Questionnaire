@@ -11,6 +11,12 @@ class Game {
     
     public static let shared = Game()
     
+    public var orderKey: String {
+        get {
+            return "questionOrder"
+        }
+    }
+    
     private var gameSession: GameSession?
     private var statistics: [Score] {
         didSet {
