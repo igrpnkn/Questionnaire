@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A0EF37725EA833400F96AB3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EF37625EA833400F96AB3 /* SettingsViewController.swift */; };
+		3A0EF39525ED71E800F96AB3 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EF39425ED71E800F96AB3 /* Observable.swift */; };
 		3AB0141025DEF67F006F4C25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0140F25DEF67F006F4C25 /* AppDelegate.swift */; };
 		3AB0141225DEF67F006F4C25 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0141125DEF67F006F4C25 /* SceneDelegate.swift */; };
 		3AB0141725DEF67F006F4C25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AB0141525DEF67F006F4C25 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		3A0EF37625EA833400F96AB3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		3A0EF39425ED71E800F96AB3 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		3AB0140C25DEF67F006F4C25 /* Questionnaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Questionnaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AB0140F25DEF67F006F4C25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AB0141125DEF67F006F4C25 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				3AB0141125DEF67F006F4C25 /* SceneDelegate.swift */,
 				3AB0141525DEF67F006F4C25 /* Main.storyboard */,
 				3AB0141A25DEF682006F4C25 /* LaunchScreen.storyboard */,
+				3A0EF39425ED71E800F96AB3 /* Observable.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A0EF39525ED71E800F96AB3 /* Observable.swift in Sources */,
 				8BF3173D25ECF6AA00F096E4 /* QuestionStrategySerial.swift in Sources */,
 				3AB0145E25E50BBD006F4C25 /* ScoreViewController.swift in Sources */,
 				3AB0147425E58D38006F4C25 /* ScoreCaretaker.swift in Sources */,
@@ -422,7 +426,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Igor-A-Penkin.Questionnaire";
+				PRODUCT_BUNDLE_IDENTIFIER = "Igor-A-Penkin.Questionnaire.ru";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -437,13 +441,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = P784YBL2RZ;
+				DEVELOPMENT_TEAM = NZ34M8AX57;
 				INFOPLIST_FILE = Questionnaire/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Igor-A-Penkin.Questionnaire";
+				PRODUCT_BUNDLE_IDENTIFIER = "Igor-A-Penkin.Questionnaire.ru";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

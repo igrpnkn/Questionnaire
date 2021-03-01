@@ -226,6 +226,15 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100% progress" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTr-sh-p7i">
+                                <rect key="frame" x="160" y="304" width="110" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="sQ7-tJ-0nU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8hb-yA-Y7G"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
@@ -236,6 +245,7 @@
                             <constraint firstItem="D3l-jV-vcm" firstAttribute="leading" secondItem="eUF-uo-WNH" secondAttribute="trailing" constant="10" id="Nri-em-3Rc"/>
                             <constraint firstItem="D3l-jV-vcm" firstAttribute="top" secondItem="SaC-nn-uXw" secondAttribute="bottom" constant="8" id="ONh-qi-c6R"/>
                             <constraint firstItem="eUF-uo-WNH" firstAttribute="top" secondItem="SaC-nn-uXw" secondAttribute="bottom" constant="8" id="Q47-XX-dqR"/>
+                            <constraint firstItem="ePt-cE-8DY" firstAttribute="leading" secondItem="zTr-sh-p7i" secondAttribute="trailing" constant="10" id="T0H-lQ-9OJ"/>
                             <constraint firstItem="vtg-sq-w83" firstAttribute="trailing" secondItem="8hb-yA-Y7G" secondAttribute="trailing" id="V9a-mY-eIm"/>
                             <constraint firstItem="8hb-yA-Y7G" firstAttribute="trailing" secondItem="SaC-nn-uXw" secondAttribute="trailing" constant="10" id="WSn-ck-ADC"/>
                             <constraint firstItem="vtg-sq-w83" firstAttribute="bottom" secondItem="8hb-yA-Y7G" secondAttribute="bottom" id="WYw-mW-yBV"/>
@@ -247,6 +257,7 @@
                             <constraint firstItem="8hb-yA-Y7G" firstAttribute="trailing" secondItem="k3m-ey-dPf" secondAttribute="trailing" constant="10" id="poo-xQ-uiX"/>
                             <constraint firstItem="SaC-nn-uXw" firstAttribute="top" secondItem="k3m-ey-dPf" secondAttribute="bottom" id="tfx-Ge-sf1"/>
                             <constraint firstItem="ePt-cE-8DY" firstAttribute="top" secondItem="SaC-nn-uXw" secondAttribute="bottom" constant="8" id="txG-9u-fWW"/>
+                            <constraint firstItem="zTr-sh-p7i" firstAttribute="top" secondItem="SaC-nn-uXw" secondAttribute="bottom" constant="8" id="zqa-UM-0Hy"/>
                             <constraint firstItem="zYJ-Op-EVV" firstAttribute="leading" secondItem="D3l-jV-vcm" secondAttribute="trailing" constant="10" id="zwt-0j-6CS"/>
                         </constraints>
                     </view>
@@ -254,6 +265,7 @@
                         <outlet property="callFriend" destination="eUF-uo-WNH" id="0Ie-KP-MoR"/>
                         <outlet property="dropHalf" destination="zYJ-Op-EVV" id="7lY-JE-qXw"/>
                         <outlet property="groupHelp" destination="D3l-jV-vcm" id="cTh-0x-HZz"/>
+                        <outlet property="progressPercentage" destination="zTr-sh-p7i" id="3oD-qE-aeo"/>
                         <outlet property="questionBody" destination="SaC-nn-uXw" id="Qod-Qe-sib"/>
                         <outlet property="questionTitile" destination="k3m-ey-dPf" id="3sB-B9-Ew8"/>
                         <outlet property="stopGame" destination="ePt-cE-8DY" id="Bcd-Av-dm2"/>
