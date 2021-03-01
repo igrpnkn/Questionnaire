@@ -35,4 +35,8 @@ class ScoreCaretaker {
         }
     }
     
+    func deleteScores() {
+        UserDefaults.standard.setValue(nil, forKey: key)
+    }
+    
 }

@@ -36,7 +36,11 @@ class GameSession {
         self.isCallFriendUsed = false
     }
     
-    func updateGameSession(asked: Int, dropUsed: Bool, callUsed: Bool, groupUsed: Bool) {
+    public func getQuestionOrder() -> QuestionOrder {
+        return self.questionOrder
+    }
+    
+    public func updateGameSession(asked: Int, dropUsed: Bool, callUsed: Bool, groupUsed: Bool) {
         self.askedQuestions = asked
         self.isDropHalfUsed = dropUsed
         self.isCallFriendUsed = callUsed

@@ -23,6 +23,8 @@
 		3AB0146A25E54E52006F4C25 /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0146925E54E52006F4C25 /* GameSession.swift */; };
 		3AB0147125E58C7F006F4C25 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0147025E58C7F006F4C25 /* Score.swift */; };
 		3AB0147425E58D38006F4C25 /* ScoreCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0147325E58D38006F4C25 /* ScoreCaretaker.swift */; };
+		8BF3173D25ECF6AA00F096E4 /* QuestionStrategySerial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3173C25ECF6AA00F096E4 /* QuestionStrategySerial.swift */; };
+		8BF3174025ECF6B800F096E4 /* QuestionStrategyRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3173F25ECF6B800F096E4 /* QuestionStrategyRandom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		3AB0146925E54E52006F4C25 /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
 		3AB0147025E58C7F006F4C25 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		3AB0147325E58D38006F4C25 /* ScoreCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCaretaker.swift; sourceTree = "<group>"; };
+		8BF3173C25ECF6AA00F096E4 /* QuestionStrategySerial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionStrategySerial.swift; sourceTree = "<group>"; };
+		8BF3173F25ECF6B800F096E4 /* QuestionStrategyRandom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionStrategyRandom.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,9 +72,11 @@
 		3A0EF36F25EA7B7700F96AB3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3AB0146925E54E52006F4C25 /* GameSession.swift */,
 				3AB0146625E54E42006F4C25 /* Game.swift */,
+				3AB0146925E54E52006F4C25 /* GameSession.swift */,
 				3AB0145525E40EA4006F4C25 /* QuestionProvider.swift */,
+				8BF3173C25ECF6AA00F096E4 /* QuestionStrategySerial.swift */,
+				8BF3173F25ECF6B800F096E4 /* QuestionStrategyRandom.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -135,15 +141,11 @@
 		3AB0140E25DEF67F006F4C25 /* Questionnaire */ = {
 			isa = PBXGroup;
 			children = (
+				8BF3173925ECEAAC00F096E4 /* Application */,
 				3A0EF36E25EA7A7300F96AB3 /* Settings */,
 				3AB0146125E50CA4006F4C25 /* Score */,
 				3AB0145B25E431F9006F4C25 /* Game */,
-				3AB0144725E3FD36006F4C25 /* GameMenuViewController.swift */,
-				3AB0140F25DEF67F006F4C25 /* AppDelegate.swift */,
-				3AB0141125DEF67F006F4C25 /* SceneDelegate.swift */,
 				3AB0141825DEF682006F4C25 /* Assets.xcassets */,
-				3AB0141525DEF67F006F4C25 /* Main.storyboard */,
-				3AB0141A25DEF682006F4C25 /* LaunchScreen.storyboard */,
 				3AB0141D25DEF682006F4C25 /* Info.plist */,
 			);
 			path = Questionnaire;
@@ -167,6 +169,18 @@
 				3A0EF37225EA7B9D00F96AB3 /* Controller */,
 			);
 			path = Score;
+			sourceTree = "<group>";
+		};
+		8BF3173925ECEAAC00F096E4 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				3AB0140F25DEF67F006F4C25 /* AppDelegate.swift */,
+				3AB0144725E3FD36006F4C25 /* GameMenuViewController.swift */,
+				3AB0141125DEF67F006F4C25 /* SceneDelegate.swift */,
+				3AB0141525DEF67F006F4C25 /* Main.storyboard */,
+				3AB0141A25DEF682006F4C25 /* LaunchScreen.storyboard */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,11 +253,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BF3173D25ECF6AA00F096E4 /* QuestionStrategySerial.swift in Sources */,
 				3AB0145E25E50BBD006F4C25 /* ScoreViewController.swift in Sources */,
 				3AB0147425E58D38006F4C25 /* ScoreCaretaker.swift in Sources */,
 				3AB0146725E54E42006F4C25 /* Game.swift in Sources */,
 				3AB0146A25E54E52006F4C25 /* GameSession.swift in Sources */,
 				3AB0145325E40B6F006F4C25 /* GameViewController.swift in Sources */,
+				8BF3174025ECF6B800F096E4 /* QuestionStrategyRandom.swift in Sources */,
 				3AB0146325E50CC0006F4C25 /* ScoreTableViewCell.swift in Sources */,
 				3AB0145925E431F2006F4C25 /* AnswerTableViewCell.swift in Sources */,
 				3AB0141025DEF67F006F4C25 /* AppDelegate.swift in Sources */,
@@ -398,6 +414,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NZ34M8AX57;
 				INFOPLIST_FILE = Questionnaire/Info.plist;
@@ -407,6 +424,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Igor-A-Penkin.Questionnaire";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -417,8 +435,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NZ34M8AX57;
+				DEVELOPMENT_TEAM = P784YBL2RZ;
 				INFOPLIST_FILE = Questionnaire/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -426,6 +445,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Igor-A-Penkin.Questionnaire";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

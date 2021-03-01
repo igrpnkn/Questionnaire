@@ -27,7 +27,7 @@ final class GameViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     let cellIdentifier = "answerCell"
     
-    private var questionnaire = QuestionProvider.shared.getQuestions()
+    private var questionnaire = Game.shared.getQuestions()
     private var questionCount: Int = 0
     private var isDropHalfUsed: Bool = false
     private var isCallFriendUsed: Bool = false
@@ -52,7 +52,7 @@ final class GameViewController: UIViewController {
 
     @IBAction func stopGamePressed(_ sender: Any) {
         let alert = UIAlertController(title: "Are you shure?", message: nil, preferredStyle: .actionSheet)
-        let alertContinue = UIAlertAction(title: "Continue", style: .cancel) { _ in
+        let alertContinue = UIAlertAction(title: "Continue", style: .cancel) { [weak self] _ in
         }
         let alertStop = UIAlertAction(title: "Leave", style: .destructive) { [weak self] _ in
             guard let self = self else { return }

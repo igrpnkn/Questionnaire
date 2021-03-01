@@ -17,6 +17,10 @@ enum QuestionOrder: String {
     case serial, random
 }
 
+protocol QuestionStrategy {
+    func getQuestions(for questions: [Question]) -> [Question]
+}
+
 final class QuestionProvider {
     
     public static let shared = QuestionProvider()
@@ -82,15 +86,13 @@ final class QuestionProvider {
         return questions.count
     }
     
-    public func getQuestions() -> [Question] {
-        var randomizedQuestions: [Question] = []
-        while !questions.isEmpty {
-            let randomIndex = Int.random(in: 0..<questions.count)
-            let question = questions.remove(at: randomIndex)
-            randomizedQuestions.append(question)
+    public func getQuestions(with strategy: QuestionOrder) -> [Question] {
+        switch strategy {
+        case .serial:
+            return QuestionStrategySerial().getQuestions(for: self.questions)
+        case .random:
+            return QuestionStrategyRandom().getQuestions(for: self.questions)
         }
-        self.questions = randomizedQuestions
-        return self.questions
     }
     
 }

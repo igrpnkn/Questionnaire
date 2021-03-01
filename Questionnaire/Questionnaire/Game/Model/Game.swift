@@ -30,6 +30,18 @@ class Game {
         self.statistics = self.scoreCaretaker.retrieveScores()
     }
     
+    private func informAboutDefault() {
+        // There might be some alert here in the future...
+    }
+    
+    public func getQuestions() -> [Question] {
+        guard let strategy = self.gameSession?.getQuestionOrder() else {
+            informAboutDefault()
+            return QuestionProvider.shared.getQuestions(with: .serial)
+        }
+        return QuestionProvider.shared.getQuestions(with: strategy)
+    }
+    
     public func startGame(gameSession: GameSession) {
         self.gameSession = gameSession
     }
@@ -46,6 +58,12 @@ class Game {
     }
     
     public func getScores() -> [Score] {
+        return self.statistics
+    }
+    
+    @discardableResult
+    public func deleteScores() -> [Score] {
+        self.statistics = []
         return self.statistics
     }
 

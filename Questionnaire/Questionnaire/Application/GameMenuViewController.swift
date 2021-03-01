@@ -18,23 +18,23 @@ final class GameMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        previousResult.isHidden = true
         // Do any additional setup after loading the view.
     }
     
     @IBAction func newGamePressed(_ sender: Any) {
+        gameSession = GameSession(total: QuestionProvider.shared.countQuestions())
+        Game.shared.startGame(gameSession: gameSession ?? GameSession())
         guard let newGameVC = storyboard?.instantiateViewController(identifier: "GameViewController") as? GameViewController else { return }
         newGameVC.modalTransitionStyle = .flipHorizontal
         newGameVC.modalPresentationStyle = .fullScreen
         newGameVC.delegate = self
-        gameSession = GameSession(total: QuestionProvider.shared.countQuestions())
-        Game.shared.startGame(gameSession: gameSession ?? GameSession())
         self.present(newGameVC, animated: true, completion: nil)
     }
     
     @IBAction func viewScorePressed(_ sender: Any) {
         guard let scoreListVC = storyboard?.instantiateViewController(identifier: "ScoreViewController") as? ScoreViewController else { return }
         scoreListVC.modalPresentationStyle = .formSheet
-        scoreListVC.scoreData = Game.shared.getScores()
         self.present(scoreListVC, animated: true, completion: nil)
     }
     
