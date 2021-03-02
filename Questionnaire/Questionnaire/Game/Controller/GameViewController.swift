@@ -9,7 +9,7 @@ import UIKit
 
 protocol GameDelegate: class {
     
-    func snapshot(questionNumber: Int, isDropHalfUsed: Bool, isCallFriendUsed: Bool, isGroupHelpUsed: Bool)
+    func snapshot(questionNumber: Int, questionsTotal: Int, isDropHalfUsed: Bool, isCallFriendUsed: Bool, isGroupHelpUsed: Bool)
     
 }
 
@@ -64,7 +64,7 @@ final class GameViewController: UIViewController {
         }
         let alertStop = UIAlertAction(title: "Leave", style: .destructive) { [weak self] _ in
             guard let self = self else { return }
-            self.delegate?.snapshot(questionNumber: self.questionCount.value, isDropHalfUsed: self.isDropHalfUsed, isCallFriendUsed: self.isCallFriendUsed, isGroupHelpUsed: self.isGroupHelpUsed)
+            self.delegate?.snapshot(questionNumber: self.questionCount.value, questionsTotal: self.total, isDropHalfUsed: self.isDropHalfUsed, isCallFriendUsed: self.isCallFriendUsed, isGroupHelpUsed: self.isGroupHelpUsed)
             self.dismiss(animated: true, completion: nil)
         }
         alert.addAction(alertContinue)
@@ -137,7 +137,7 @@ final class GameViewController: UIViewController {
     private func didLose() {
         let alert = UIAlertController(title: "WRONG ANSWER", message: "You are fucking loser!", preferredStyle: .actionSheet)
         let alertAction = UIAlertAction(title: "I know :((", style: .cancel) { _ in
-            self.delegate?.snapshot(questionNumber: self.questionCount.value, isDropHalfUsed: self.isDropHalfUsed, isCallFriendUsed: self.isCallFriendUsed, isGroupHelpUsed: self.isGroupHelpUsed)
+            self.delegate?.snapshot(questionNumber: self.questionCount.value, questionsTotal: self.total, isDropHalfUsed: self.isDropHalfUsed, isCallFriendUsed: self.isCallFriendUsed, isGroupHelpUsed: self.isGroupHelpUsed)
             self.dismiss(animated: true, completion: nil)
         }
         alert.addAction(alertAction)
@@ -147,7 +147,7 @@ final class GameViewController: UIViewController {
     private func didWin() {
         let alert = UIAlertController(title: "YOU HAVE WON", message: "But you won't get your money :)", preferredStyle: .actionSheet)
         let alertAction = UIAlertAction(title: "Damn it...", style: .cancel) {_ in
-            self.delegate?.snapshot(questionNumber: self.questionCount.value+1, isDropHalfUsed: self.isDropHalfUsed, isCallFriendUsed: self.isCallFriendUsed, isGroupHelpUsed: self.isGroupHelpUsed)
+            self.delegate?.snapshot(questionNumber: self.questionCount.value+1, questionsTotal: self.total, isDropHalfUsed: self.isDropHalfUsed, isCallFriendUsed: self.isCallFriendUsed, isGroupHelpUsed: self.isGroupHelpUsed)
             self.dismiss(animated: true, completion: nil)
         }
         alert.addAction(alertAction)

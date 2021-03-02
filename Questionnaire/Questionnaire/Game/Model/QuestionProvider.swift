@@ -7,12 +7,6 @@
 
 import Foundation
 
-struct Question {
-    var question: String
-    var answerIndex: Int
-    var options: [String]
-}
-
 enum QuestionOrder: String {
     case serial, random
 }
@@ -33,7 +27,7 @@ final class QuestionProvider {
                         "Одет с иголочки",
                         "Одет с наперсточка",
                         "Одет с булавочки",
-                        "Одет с ниточки"]),
+                        "Одет с ниточки"]), /*
             Question(question: "Из чего сделаны ядра орехов, которые грызёт белка в Сказке о царе Салтане?", answerIndex: 1, options: [
                         "Янтарь",
                         "Изумруд",
@@ -73,7 +67,7 @@ final class QuestionProvider {
                         "Ракета",
                         "Руками не трогать",
                         "Реверс",
-                        "Разворот"]),
+                        "Разворот"]), */
             Question(question: "Чему равняется длина удава в попугаях?", answerIndex: 3, options: [
                         "28 попугаев",
                         "31 попугай",
@@ -87,12 +81,21 @@ final class QuestionProvider {
     }
     
     public func getQuestions(with strategy: QuestionOrder) -> [Question] {
+        let questionsPack = appendCustomQuestions(to: self.questions)
         switch strategy {
         case .serial:
-            return QuestionStrategySerial().getQuestions(for: self.questions)
+            return QuestionStrategySerial().getQuestions(for: questionsPack)
         case .random:
-            return QuestionStrategyRandom().getQuestions(for: self.questions)
+            return QuestionStrategyRandom().getQuestions(for: questionsPack)
         }
+    }
+    
+    private func appendCustomQuestions(to questions: [Question]) -> [Question] {
+        var fulfilleduestions = questions
+        let caretaker = QuestionCaretaker()
+        let customQuestions = caretaker.retrieveQuestions()
+        fulfilleduestions.append(contentsOf: customQuestions)
+        return fulfilleduestions
     }
     
 }

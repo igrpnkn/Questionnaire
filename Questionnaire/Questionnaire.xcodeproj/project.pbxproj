@@ -26,6 +26,9 @@
 		3AB0147425E58D38006F4C25 /* ScoreCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0147325E58D38006F4C25 /* ScoreCaretaker.swift */; };
 		8BF3173D25ECF6AA00F096E4 /* QuestionStrategySerial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3173C25ECF6AA00F096E4 /* QuestionStrategySerial.swift */; };
 		8BF3174025ECF6B800F096E4 /* QuestionStrategyRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3173F25ECF6B800F096E4 /* QuestionStrategyRandom.swift */; };
+		8BF3174625EE337500F096E4 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3174525EE337500F096E4 /* EditorViewController.swift */; };
+		8BF3174A25EE450500F096E4 /* QuestionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3174925EE450500F096E4 /* QuestionBuilder.swift */; };
+		8BF3174D25EE45F200F096E4 /* QuestionCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF3174C25EE45F200F096E4 /* QuestionCaretaker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		3AB0147325E58D38006F4C25 /* ScoreCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCaretaker.swift; sourceTree = "<group>"; };
 		8BF3173C25ECF6AA00F096E4 /* QuestionStrategySerial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionStrategySerial.swift; sourceTree = "<group>"; };
 		8BF3173F25ECF6B800F096E4 /* QuestionStrategyRandom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionStrategyRandom.swift; sourceTree = "<group>"; };
+		8BF3174525EE337500F096E4 /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
+		8BF3174925EE450500F096E4 /* QuestionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionBuilder.swift; sourceTree = "<group>"; };
+		8BF3174C25EE45F200F096E4 /* QuestionCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCaretaker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +72,7 @@
 		3A0EF36E25EA7A7300F96AB3 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				3A0EF37625EA833400F96AB3 /* SettingsViewController.swift */,
+				8BF3174425EE32D400F096E4 /* Controller */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -79,6 +85,8 @@
 				3AB0145525E40EA4006F4C25 /* QuestionProvider.swift */,
 				8BF3173C25ECF6AA00F096E4 /* QuestionStrategySerial.swift */,
 				8BF3173F25ECF6B800F096E4 /* QuestionStrategyRandom.swift */,
+				8BF3174925EE450500F096E4 /* QuestionBuilder.swift */,
+				8BF3174C25EE45F200F096E4 /* QuestionCaretaker.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -176,14 +184,23 @@
 		8BF3173925ECEAAC00F096E4 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				3A0EF39425ED71E800F96AB3 /* Observable.swift */,
 				3AB0140F25DEF67F006F4C25 /* AppDelegate.swift */,
 				3AB0144725E3FD36006F4C25 /* GameMenuViewController.swift */,
 				3AB0141125DEF67F006F4C25 /* SceneDelegate.swift */,
 				3AB0141525DEF67F006F4C25 /* Main.storyboard */,
 				3AB0141A25DEF682006F4C25 /* LaunchScreen.storyboard */,
-				3A0EF39425ED71E800F96AB3 /* Observable.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		8BF3174425EE32D400F096E4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3A0EF37625EA833400F96AB3 /* SettingsViewController.swift */,
+				8BF3174525EE337500F096E4 /* EditorViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +282,8 @@
 				3AB0145325E40B6F006F4C25 /* GameViewController.swift in Sources */,
 				8BF3174025ECF6B800F096E4 /* QuestionStrategyRandom.swift in Sources */,
 				3AB0146325E50CC0006F4C25 /* ScoreTableViewCell.swift in Sources */,
+				8BF3174D25EE45F200F096E4 /* QuestionCaretaker.swift in Sources */,
+				8BF3174A25EE450500F096E4 /* QuestionBuilder.swift in Sources */,
 				3AB0145925E431F2006F4C25 /* AnswerTableViewCell.swift in Sources */,
 				3AB0141025DEF67F006F4C25 /* AppDelegate.swift in Sources */,
 				3AB0144825E3FD36006F4C25 /* GameMenuViewController.swift in Sources */,
@@ -272,6 +291,7 @@
 				3A0EF37725EA833400F96AB3 /* SettingsViewController.swift in Sources */,
 				3AB0147125E58C7F006F4C25 /* Score.swift in Sources */,
 				3AB0145625E40EA4006F4C25 /* QuestionProvider.swift in Sources */,
+				8BF3174625EE337500F096E4 /* EditorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

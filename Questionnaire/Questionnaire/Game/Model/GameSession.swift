@@ -10,7 +10,7 @@ import Foundation
 class GameSession {
     
     var dateStart: Date?
-    var totalQuestions: Int?
+    //var totalQuestions: Int?
     var askedQuestions: Int?
     var isDropHalfUsed: Bool?
     var isCallFriendUsed: Bool?
@@ -25,11 +25,7 @@ class GameSession {
     }
     
     public init() {
-    }
-    
-    public init(total: Int) {
         self.dateStart = Date()
-        self.totalQuestions = total
         self.askedQuestions = 0
         self.isDropHalfUsed = false
         self.isGroupHelpUsed = false

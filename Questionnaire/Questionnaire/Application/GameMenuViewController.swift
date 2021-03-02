@@ -23,8 +23,8 @@ final class GameMenuViewController: UIViewController {
     }
     
     @IBAction func newGamePressed(_ sender: Any) {
-        gameSession = GameSession(total: QuestionProvider.shared.countQuestions())
-        Game.shared.startGame(gameSession: gameSession ?? GameSession())
+        gameSession = GameSession()
+        Game.shared.startGame(gameSession: gameSession!)
         guard let newGameVC = storyboard?.instantiateViewController(identifier: "GameViewController") as? GameViewController else { return }
         newGameVC.modalTransitionStyle = .flipHorizontal
         newGameVC.modalPresentationStyle = .fullScreen
@@ -50,11 +50,11 @@ final class GameMenuViewController: UIViewController {
 
 extension GameMenuViewController: GameDelegate {
     
-    func snapshot(questionNumber: Int, isDropHalfUsed: Bool, isCallFriendUsed: Bool, isGroupHelpUsed: Bool) {
+    func snapshot(questionNumber: Int, questionsTotal: Int, isDropHalfUsed: Bool, isCallFriendUsed: Bool, isGroupHelpUsed: Bool) {
         previousResult.text = "Previous result: \(questionNumber)"
         previousResult.isHidden = false
         gameSession?.updateGameSession(asked: questionNumber, dropUsed: isDropHalfUsed, callUsed: isCallFriendUsed, groupUsed: isGroupHelpUsed)
-        Game.shared.ensureStatistic()
+        Game.shared.ensureStatistic(questionsWas: questionsTotal)
         Game.shared.stopGame()
     }
     

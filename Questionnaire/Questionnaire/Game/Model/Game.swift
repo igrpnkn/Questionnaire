@@ -50,8 +50,11 @@ class Game {
         self.gameSession = nil
     }
     
-    public func ensureStatistic() {
-        let accuracity = Double(gameSession?.askedQuestions ?? 0)/Double(gameSession?.totalQuestions ?? 1)
+    public func ensureStatistic(questionsWas total: Int) {
+        guard let askedQuestions = self.gameSession?.askedQuestions else {
+            return
+        }
+        let accuracity = Double(askedQuestions)/Double(total)
         let date = Date()
         let score = Score(date: date, accuracity: accuracity)
         statistics.insert(score, at: 0)

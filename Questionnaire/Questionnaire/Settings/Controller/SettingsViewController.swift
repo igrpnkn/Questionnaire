@@ -32,6 +32,24 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    @IBAction func addQuestionButtonPressed(_ sender: Any) {
+        guard let editorVC = storyboard?.instantiateViewController(identifier: "EditorViewController") as? EditorViewController else { return }
+        editorVC.modalPresentationStyle = .formSheet
+        self.present(editorVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func deleteQuestionsButtonPressed(_ sender: Any) {
+        let alert = UIAlertController(title: "Warning", message: "Are you sure?\nAction will delete all added questions!", preferredStyle: .alert)
+        let alertDeleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+            let caretaker = QuestionCaretaker()
+            caretaker.deleteQuestions()
+        }
+        let alertCancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(alertCancelAction)
+        alert.addAction(alertDeleteAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func exitButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -45,7 +63,6 @@ class SettingsViewController: UIViewController {
             let order = QuestionOrder.serial.rawValue
             UserDefaults.standard.setValue(order, forKey: Game.shared.orderKey)
         }
-        print("\nINFO: Switcher for Random was pressed: \(UserDefaults.standard.object(forKey: Game.shared.orderKey))")
         print(randomizingSwitcher.isOn)
     }
     
