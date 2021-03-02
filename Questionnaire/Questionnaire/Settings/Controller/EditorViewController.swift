@@ -18,6 +18,7 @@ class EditorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.addTapGestureToHideKeyboard()
         // Do any additional setup after loading the view.
     }
     
@@ -58,14 +59,7 @@ class EditorViewController: UIViewController {
         
         let caretaker = QuestionCaretaker()
         caretaker.saveQuestion(question: addedQuestion)
-        /*
-        var storedQuestion = caretaker.retrieveQuestions()
-        print("\nINFO: Stored:\n\(storedQuestion)")
-        
-        caretaker.deleteQuestions()
-        storedQuestion = caretaker.retrieveQuestions()
-        print("\nINFO: Stored after deletion:\n\(storedQuestion)")
-        */
+ 
         clearInputIfSuccess()
     }
     

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A0EF37725EA833400F96AB3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EF37625EA833400F96AB3 /* SettingsViewController.swift */; };
 		3A0EF39525ED71E800F96AB3 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EF39425ED71E800F96AB3 /* Observable.swift */; };
+		3A0EF39C25EED49E00F96AB3 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EF39B25EED49E00F96AB3 /* UIViewExtension.swift */; };
 		3AB0141025DEF67F006F4C25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0140F25DEF67F006F4C25 /* AppDelegate.swift */; };
 		3AB0141225DEF67F006F4C25 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB0141125DEF67F006F4C25 /* SceneDelegate.swift */; };
 		3AB0141725DEF67F006F4C25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AB0141525DEF67F006F4C25 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		3A0EF37625EA833400F96AB3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3A0EF39425ED71E800F96AB3 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		3A0EF39B25EED49E00F96AB3 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		3AB0140C25DEF67F006F4C25 /* Questionnaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Questionnaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AB0140F25DEF67F006F4C25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AB0141125DEF67F006F4C25 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				3AB0141125DEF67F006F4C25 /* SceneDelegate.swift */,
 				3AB0141525DEF67F006F4C25 /* Main.storyboard */,
 				3AB0141A25DEF682006F4C25 /* LaunchScreen.storyboard */,
+				3A0EF39B25EED49E00F96AB3 /* UIViewExtension.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				8BF3174025ECF6B800F096E4 /* QuestionStrategyRandom.swift in Sources */,
 				3AB0146325E50CC0006F4C25 /* ScoreTableViewCell.swift in Sources */,
 				8BF3174D25EE45F200F096E4 /* QuestionCaretaker.swift in Sources */,
+				3A0EF39C25EED49E00F96AB3 /* UIViewExtension.swift in Sources */,
 				8BF3174A25EE450500F096E4 /* QuestionBuilder.swift in Sources */,
 				3AB0145925E431F2006F4C25 /* AnswerTableViewCell.swift in Sources */,
 				3AB0141025DEF67F006F4C25 /* AppDelegate.swift in Sources */,
