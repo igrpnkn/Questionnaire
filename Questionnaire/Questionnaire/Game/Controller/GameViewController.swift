@@ -9,7 +9,7 @@ import UIKit
 
 protocol GameDelegate: class {
     
-    func snapshot(questionNumber: Int, isDropHalfUsed: Bool, isCallFriendUsed: Bool, isGroupHelpUsed: Bool)
+    func snapshot(questionNumber: Int, questionsTotal: Int, isDropHalfUsed: Bool, isCallFriendUsed: Bool, isGroupHelpUsed: Bool)
     
 }
 
@@ -23,12 +23,14 @@ final class GameViewController: UIViewController {
     @IBOutlet weak var groupHelp: UIButton!
     @IBOutlet weak var dropHalf: UIButton!
     @IBOutlet weak var stopGame: UIButton!
+    @IBOutlet weak var progressPercentage: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
     let cellIdentifier = "answerCell"
     
-    private var questionnaire = QuestionProvider.shared.getRandomized()
-    private var questionCount: Int = 0
+    private var questionnaire = Game.shared.getQuestions()
+    private var total: Int = 0
+    private var questionCount = Observable<Int>(0)
     private var isDropHalfUsed: Bool = false
     private var isCallFriendUsed: Bool = false
     private var isGroupHelpUsed: Bool = false
@@ -37,12 +39,18 @@ final class GameViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        self.total = questionnaire.count
+        questionCount.addObserver(self, options: [.initial, .new]) { [weak self] (counter, options) in
+            guard let self = self else { return }
+            let percentage = counter*100 / self.questionnaire.count
+            self.progressPercentage.text = "\(percentage)% progress"
+        }
         ensureQuestion()
     }
     
     private func ensureQuestion() {
-        self.questionTitile.text = "Question \(questionCount + 1) of \(questionnaire.count)"
-        self.questionBody.text = questionnaire[questionCount].question
+        self.questionTitile.text = "Question \(questionCount.value + 1) of \(questionnaire.count)"
+        self.questionBody.text = questionnaire[questionCount.value].question
         questionBody.textAlignment = .justified
         questionBody.backgroundColor = .systemGray6
         questionBody.clipsToBounds = true
@@ -52,10 +60,11 @@ final class GameViewController: UIViewController {
 
     @IBAction func stopGamePressed(_ sender: Any) {
         let alert = UIAlertController(title: "Are you shure?", message: nil, preferredStyle: .actionSheet)
-        let alertContinue = UIAlertAction(title: "Continue", style: .cancel) { _ in
+        let alertContinue = UIAlertAction(title: "Continue", style: .cancel) { [weak self] _ in
         }
-        let alertStop = UIAlertAction(title: "Leave", style: .destructive) { _ in
-            self.delegate?.snapshot(questionNumber: self.questionCount, isDropHalfUsed: self.isDropHalfUsed, isCallFriendUsed: self.isCallFriendUsed, isGroupHelpUsed: self.isGroupHelpUsed)
+        let alertStop = UIAlertAction(title: "Leave", style: .destructive) { [weak self] _ in
+            guard let self = self else { return }
+            self.delegate?.snapshot(questionNumber: self.questionCount.value, questionsTotal: self.total, isDropHalfUsed: self.isDropHalfUsed, isCallFriendUsed: self.isCallFriendUsed, isGroupHelpUsed: self.isGroupHelpUsed)
             self.dismiss(animated: true, completion: nil)
         }
         alert.addAction(alertContinue)
@@ -68,11 +77,11 @@ final class GameViewController: UIViewController {
             return
         }
         var hypothesis: String {
-            let randomIndex = Int.random(in: 0...questionnaire[questionCount].options.count)
-            if randomIndex == questionnaire[questionCount].options.count {
-                return "Suck buddy :)"
+            let randomIndex = Int.random(in: 0...questionnaire[questionCount.value].options.count)
+            if randomIndex == questionnaire[questionCount.value].options.count {
+                return "I don't know :("
             } else {
-                return "I think the answer is: \(questionnaire[questionCount].options[randomIndex])"
+                return "I think the answer is: \(questionnaire[questionCount.value].options[randomIndex])"
             }
         }
         let alert = UIAlertController(title: "Friend said:", message: hypothesis, preferredStyle: .alert)
@@ -95,7 +104,7 @@ final class GameViewController: UIViewController {
         quote = quote - secondPercentage
         let thirdPercentage = Int.random(in: 0..<quote)
         let fourthPercentage = quote - thirdPercentage
-        let message = "AUDIENCE HAS VOTED FOLLOWING\n\n\(questionnaire[questionCount].options[0]) -> \(firstPercentage)\n\(questionnaire[questionCount].options[1]) -> \(secondPercentage)\n\(questionnaire[questionCount].options[2]) -> \(thirdPercentage)\n\(questionnaire[questionCount].options[3]) -> \(fourthPercentage)"
+        let message = "AUDIENCE HAS VOTED FOLLOWING\n\n\(questionnaire[questionCount.value].options[0]) -> \(firstPercentage)\n\(questionnaire[questionCount.value].options[1]) -> \(secondPercentage)\n\(questionnaire[questionCount.value].options[2]) -> \(thirdPercentage)\n\(questionnaire[questionCount.value].options[3]) -> \(fourthPercentage)"
         let alert = UIAlertController(title: "Voices", message: message, preferredStyle: .actionSheet)
         let alertAction = UIAlertAction(title: "OK", style: .destructive, handler: nil)
         alert.addAction(alertAction)
@@ -112,10 +121,10 @@ final class GameViewController: UIViewController {
         var deletions = 0
         var deletedIndex: Int?
         while deletions < 2 {
-            let randomIndex = Int.random(in: 0..<questionnaire[questionCount].options.count)
-            if randomIndex != questionnaire[questionCount].answerIndex &&
+            let randomIndex = Int.random(in: 0..<questionnaire[questionCount.value].options.count)
+            if randomIndex != questionnaire[questionCount.value].answerIndex &&
                randomIndex != deletedIndex {
-                questionnaire[questionCount].options[randomIndex] = ""
+                questionnaire[questionCount.value].options[randomIndex] = ""
                 deletedIndex = randomIndex
                 deletions += 1
             }
@@ -128,7 +137,7 @@ final class GameViewController: UIViewController {
     private func didLose() {
         let alert = UIAlertController(title: "WRONG ANSWER", message: "You are fucking loser!", preferredStyle: .actionSheet)
         let alertAction = UIAlertAction(title: "I know :((", style: .cancel) { _ in
-            self.delegate?.snapshot(questionNumber: self.questionCount, isDropHalfUsed: self.isDropHalfUsed, isCallFriendUsed: self.isCallFriendUsed, isGroupHelpUsed: self.isGroupHelpUsed)
+            self.delegate?.snapshot(questionNumber: self.questionCount.value, questionsTotal: self.total, isDropHalfUsed: self.isDropHalfUsed, isCallFriendUsed: self.isCallFriendUsed, isGroupHelpUsed: self.isGroupHelpUsed)
             self.dismiss(animated: true, completion: nil)
         }
         alert.addAction(alertAction)
@@ -138,7 +147,7 @@ final class GameViewController: UIViewController {
     private func didWin() {
         let alert = UIAlertController(title: "YOU HAVE WON", message: "But you won't get your money :)", preferredStyle: .actionSheet)
         let alertAction = UIAlertAction(title: "Damn it...", style: .cancel) {_ in
-            self.delegate?.snapshot(questionNumber: self.questionCount+1, isDropHalfUsed: self.isDropHalfUsed, isCallFriendUsed: self.isCallFriendUsed, isGroupHelpUsed: self.isGroupHelpUsed)
+            self.delegate?.snapshot(questionNumber: self.questionCount.value+1, questionsTotal: self.total, isDropHalfUsed: self.isDropHalfUsed, isCallFriendUsed: self.isCallFriendUsed, isGroupHelpUsed: self.isGroupHelpUsed)
             self.dismiss(animated: true, completion: nil)
         }
         alert.addAction(alertAction)
@@ -155,15 +164,15 @@ extension GameViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath) as! AnswerTableViewCell
-        let answer = questionnaire[questionCount].options[indexPath.row]
+        let answer = questionnaire[questionCount.value].options[indexPath.row]
         cell.configureView(logo: UIImage(systemName: "hand.tap"), answer: answer)
         return cell
     }
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == questionnaire[questionCount].answerIndex {
-            if self.questionCount < (questionnaire.count-1) {
-                self.questionCount += 1
+        if indexPath.row == questionnaire[questionCount.value].answerIndex {
+            if self.questionCount.value < (questionnaire.count-1) {
+                self.questionCount.value += 1
                 ensureQuestion()
                 tableView.reloadData()
             } else {

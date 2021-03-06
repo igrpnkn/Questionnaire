@@ -7,10 +7,12 @@
 
 import Foundation
 
-struct Question {
-    var question: String
-    var answerIndex: Int
-    var options: [String]
+enum QuestionOrder: String {
+    case serial, random
+}
+
+protocol QuestionStrategy {
+    func getQuestions(for questions: [Question]) -> [Question]
 }
 
 final class QuestionProvider {
@@ -65,7 +67,7 @@ final class QuestionProvider {
                         "Ракета",
                         "Руками не трогать",
                         "Реверс",
-                        "Разворот"]),
+                        "Разворот"]), 
             Question(question: "Чему равняется длина удава в попугаях?", answerIndex: 3, options: [
                         "28 попугаев",
                         "31 попугай",
@@ -78,15 +80,22 @@ final class QuestionProvider {
         return questions.count
     }
     
-    public func getRandomized() -> [Question] {
-        var randomizedQuestions: [Question] = []
-        while !questions.isEmpty {
-            let randomIndex = Int.random(in: 0..<questions.count)
-            let question = questions.remove(at: randomIndex)
-            randomizedQuestions.append(question)
+    public func getQuestions(with strategy: QuestionOrder) -> [Question] {
+        let questionsPack = appendCustomQuestions(to: self.questions)
+        switch strategy {
+        case .serial:
+            return QuestionStrategySerial().getQuestions(for: questionsPack)
+        case .random:
+            return QuestionStrategyRandom().getQuestions(for: questionsPack)
         }
-        self.questions = randomizedQuestions
-        return self.questions
+    }
+    
+    private func appendCustomQuestions(to questions: [Question]) -> [Question] {
+        var fulfilleduestions = questions
+        let caretaker = QuestionCaretaker()
+        let customQuestions = caretaker.retrieveQuestions()
+        fulfilleduestions.append(contentsOf: customQuestions)
+        return fulfilleduestions
     }
     
 }

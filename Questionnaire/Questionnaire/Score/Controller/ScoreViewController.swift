@@ -13,13 +13,18 @@ class ScoreViewController: UIViewController {
     @IBOutlet weak var scoreTable: UITableView!
     
     let cellIdentifier = "scoreCell"
-    var scoreData: [Score] = []
+    var scoreData: [Score] = Game.shared.getScores()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         scoreTable.delegate = self
         scoreTable.dataSource = self
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func deleteButtonPressed(_ sender: Any) {
+        self.scoreData = Game.shared.deleteScores()
+        scoreTable.reloadData()
     }
     
     @IBAction func exitButtonPressed(_ sender: Any) {
